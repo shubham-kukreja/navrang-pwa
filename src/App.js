@@ -1,12 +1,22 @@
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import "./App.css";
 import Routes from "./Routes";
 
 function App() {
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#e83328",
+      },
+    },
+  });
   return (
-    <div className="App">
-      <Routes />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Routes />
+      </div>
+    </ThemeProvider>
   );
 }
 
