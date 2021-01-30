@@ -1,24 +1,27 @@
 {
   "files": {
-    "main.css": "/navrang-pwa/static/css/main.fa0e13cc.chunk.css",
-    "main.js": "/navrang-pwa/static/js/main.fc4c2b04.chunk.js",
-    "main.js.map": "/navrang-pwa/static/js/main.fc4c2b04.chunk.js.map",
-    "runtime-main.js": "/navrang-pwa/static/js/runtime-main.ce7945c0.js",
-    "runtime-main.js.map": "/navrang-pwa/static/js/runtime-main.ce7945c0.js.map",
-    "static/js/2.4d9bef78.chunk.js": "/navrang-pwa/static/js/2.4d9bef78.chunk.js",
-    "static/js/2.4d9bef78.chunk.js.map": "/navrang-pwa/static/js/2.4d9bef78.chunk.js.map",
-    "static/js/3.ba859d8a.chunk.js": "/navrang-pwa/static/js/3.ba859d8a.chunk.js",
-    "static/js/3.ba859d8a.chunk.js.map": "/navrang-pwa/static/js/3.ba859d8a.chunk.js.map",
+    "main.css": "/navrang-pwa/static/css/main.fc77fe8d.chunk.css",
+    "main.js": "/navrang-pwa/static/js/main.70336682.chunk.js",
+    "main.js.map": "/navrang-pwa/static/js/main.70336682.chunk.js.map",
+    "runtime-main.js": "/navrang-pwa/static/js/runtime-main.1392811b.js",
+    "runtime-main.js.map": "/navrang-pwa/static/js/runtime-main.1392811b.js.map",
+    "static/css/2.59dee31d.chunk.css": "/navrang-pwa/static/css/2.59dee31d.chunk.css",
+    "static/js/2.e0c74771.chunk.js": "/navrang-pwa/static/js/2.e0c74771.chunk.js",
+    "static/js/2.e0c74771.chunk.js.map": "/navrang-pwa/static/js/2.e0c74771.chunk.js.map",
+    "static/js/3.c8287777.chunk.js": "/navrang-pwa/static/js/3.c8287777.chunk.js",
+    "static/js/3.c8287777.chunk.js.map": "/navrang-pwa/static/js/3.c8287777.chunk.js.map",
     "index.html": "/navrang-pwa/index.html",
     "service-worker.js": "/navrang-pwa/service-worker.js",
     "service-worker.js.map": "/navrang-pwa/service-worker.js.map",
-    "static/css/main.fa0e13cc.chunk.css.map": "/navrang-pwa/static/css/main.fa0e13cc.chunk.css.map",
-    "static/js/2.4d9bef78.chunk.js.LICENSE.txt": "/navrang-pwa/static/js/2.4d9bef78.chunk.js.LICENSE.txt"
+    "static/css/2.59dee31d.chunk.css.map": "/navrang-pwa/static/css/2.59dee31d.chunk.css.map",
+    "static/css/main.fc77fe8d.chunk.css.map": "/navrang-pwa/static/css/main.fc77fe8d.chunk.css.map",
+    "static/js/2.e0c74771.chunk.js.LICENSE.txt": "/navrang-pwa/static/js/2.e0c74771.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ce7945c0.js",
-    "static/js/2.4d9bef78.chunk.js",
-    "static/css/main.fa0e13cc.chunk.css",
-    "static/js/main.fc4c2b04.chunk.js"
+    "static/js/runtime-main.1392811b.js",
+    "static/css/2.59dee31d.chunk.css",
+    "static/js/2.e0c74771.chunk.js",
+    "static/css/main.fc77fe8d.chunk.css",
+    "static/js/main.70336682.chunk.js"
   ]
 }
