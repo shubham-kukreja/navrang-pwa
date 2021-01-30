@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   CircularProgress,
@@ -18,6 +18,8 @@ import {
 import { firestore } from "../config/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import Tables from "../components/Tables";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,10 +36,13 @@ function AddItem() {
   const [totalOut, setTotalOut] = useState(0);
   const [total, setTotal] = useState(0);
   const [rem, setRem] = useState(0);
+  const [blendNo, setBlendNo] = useState("");
+  const [blendQuantity, setBlendQuantity] = useState("");
   const [spinner, setSpinner] = useState(false);
   const [tableDataIn, setTableDataIn] = useState([]);
   const [tableDataOut, setTableDataOut] = useState([]);
   const [cat, setCat] = useState("A");
+  const [startDate, setStartDate] = useState(new Date());
 
   const classes = useStyles();
   const parchiRef = firestore.collection("parchi");
@@ -60,12 +65,14 @@ function AddItem() {
   const saveItem = async () => {
     const item = {
       cat: cat,
-      date: new Date(),
+      date: startDate,
       previous_rem: previousRem,
       rem: rem,
       total: total,
       total_in: { value: totalIn, items: tableDataIn },
       total_out: { value: totalOut, items: tableDataOut },
+      blendNo: blendNo,
+      blendQuantity: blendQuantity,
     };
     setSpinner(true);
     await firestore.collection("parchi").add(item);
@@ -101,7 +108,10 @@ function AddItem() {
           </FormControl>
         </ListItem>
         <ListItem button>
-          <ListItemText primary={`${new Date().toDateString()}`} />
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
         </ListItem>
         <ListItem button>
           <ListItemText primary={`मा. शिल्लक :`} />
@@ -122,6 +132,27 @@ function AddItem() {
             {totalIn} Kg
           </Typography>
         </ListItem>
+        <ListItem>
+          <ListItemText primary={`Blend No :`} className="small-text" />
+          <TextField
+            inputProps={{ min: 0, style: { textAlign: "left" } }}
+            value={blendNo}
+            style={{ width: "50%", textAlign: "right" }}
+            name="previousRem"
+            onChange={(e) => setBlendNo(e.target.value)}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary={`Blend संख्या :`} />
+          <TextField
+            inputProps={{ min: 0, style: { textAlign: "left" } }}
+            value={blendQuantity}
+            style={{ width: "50%", textAlign: "right" }}
+            name="previousRem"
+            onChange={(e) => setBlendQuantity(e.target.value)}
+          />
+        </ListItem>
+        <br />
         <Tables
           total={totalIn}
           setTotal={setTotalIn}

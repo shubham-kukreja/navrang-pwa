@@ -1,6 +1,7 @@
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import "./App.css";
+import TemporaryDrawer from "./components/Drawer";
 import Routes from "./Routes";
 
 function App() {

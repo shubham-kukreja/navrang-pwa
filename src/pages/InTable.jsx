@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { useParams } from "react-router-dom";
 import { firestore } from "../config/firebase";
@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Container, Typography } from "@material-ui/core";
 
 function InTable() {
   const { id } = useParams();
@@ -23,9 +24,14 @@ function InTable() {
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       {details && (
-        <div>
+        <>
+          <Container>
+            <Typography>Blend No : {details?.blendNo}</Typography>
+            <Typography>Blend संख्या : {details?.blendQuantity}</Typography>
+            <br />
+          </Container>
           <DenseTable details={details} />
-        </div>
+        </>
       )}
     </div>
   );
@@ -45,39 +51,49 @@ function DenseTable({ details }) {
   console.log(rows);
 
   return (
-    <TableContainer
-      component={Paper}
-      style={{ textAlign: "center", justifyContent: "center", display: "flex" }}
-    >
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Bag</TableCell>
-            <TableCell align="center">Weight</TableCell>
-            <TableCell align="center">Total Kg</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell component="th" scope="row">
-                {row.bags}
-              </TableCell>
-              <TableCell align="center">{row.weight}</TableCell>
-              <TableCell align="center">{row.total_weight}</TableCell>
+    <Fragment>
+      <TableContainer
+        component={Paper}
+        style={{
+          textAlign: "center",
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
+        <Table
+          className={classes.table}
+          size="small"
+          aria-label="a dense table"
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell>Bag</TableCell>
+              <TableCell align="center">Weight</TableCell>
+              <TableCell align="center">Total Kg</TableCell>
             </TableRow>
-          ))}
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell align="center">
-              <b>Total : </b>
-            </TableCell>
-            <TableCell align="center">
-              <b>{details.total_in.value}</b>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row, index) => (
+              <TableRow key={index}>
+                <TableCell component="th" scope="row">
+                  {row.bags}
+                </TableCell>
+                <TableCell align="center">{row.weight}</TableCell>
+                <TableCell align="center">{row.total_weight}</TableCell>
+              </TableRow>
+            ))}
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="center">
+                <b>Total : </b>
+              </TableCell>
+              <TableCell align="center">
+                <b>{details.total_in.value}</b>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Fragment>
   );
 }

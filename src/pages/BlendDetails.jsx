@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { firestore } from "../config/firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import {
@@ -24,7 +24,7 @@ function BlendDetails(props) {
   const { id } = useParams();
   const classes = useStyles();
   const parchiRef = firestore.collection("parchi");
-  const query = parchiRef.where("cat", "==", id).limit(25);
+  const query = parchiRef.where("cat", "==", id);
 
   const [parchi, loading, error] = useCollectionData(query, { idField: "id" });
 
@@ -40,9 +40,11 @@ function BlendDetails(props) {
             </div>
           )}
           {parchi &&
-            parchi.map((data, index) => (
-              <ItemCard key={data.id} data={data} index={index} />
-            ))}
+            parchi
+              .sort((a, b) => a.date.date < b.date.date)
+              .map((data, index) => (
+                <ItemCard key={data.id} data={data} index={index} />
+              ))}
         </List>
       </div>
     </Fragment>
@@ -54,7 +56,9 @@ const ItemCard = ({ data, index }) => {
     <ListItemLink
       key={index}
       to={`/blendetails/${data.id}`}
-      primary={data.date.toDate().toUTCString()}
+      primary={`${data.date.toDate().getDate()} / ${
+        data.date.toDate().getMonth() + 1
+      } / ${data.date.toDate().getFullYear()}`}
     />
   );
 };

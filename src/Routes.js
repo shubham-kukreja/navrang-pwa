@@ -8,6 +8,8 @@ import OutTable from "./pages/OutTable";
 import Navbar from "./components/Navbar";
 import AddItem from "./pages/AddItem";
 import Tables from "./components/Tables";
+import Staff from "./pages/Staff";
+import StaffDetails from "./pages/StaffDetails";
 
 function Routes() {
   return (
@@ -16,6 +18,12 @@ function Routes() {
       <Switch>
         <Route path="/" exact>
           <Blends />
+        </Route>
+        <Route path="/staff" exact>
+          <Staff />
+        </Route>
+        <Route path="/staff/:id" exact>
+          <StaffDetails />
         </Route>
         <Route path="/blends/:id" exact>
           <BlendDetails />
